@@ -3,7 +3,7 @@ import styles from '../Footer.module.css';
 import back from '../assets/footer.webp';
 import zetlogo from '../assets/zet_logo_white.svg';
 import Link from 'next/link';
-import Li from '../assets/linkedIn.svg';
+import Li from '../assets/linkedin.svg';
 import insta from '../assets/instagram.svg';
 import face from '../assets/facebook.svg';
 import tel from '../assets/Telegram.svg';
