@@ -1,113 +1,164 @@
-import Image from 'next/image'
+'use client';
+import Image from "next/image";
+import styles from "./page.module.css";
+import download from "./assets/downloadBtn.svg";
+import Hero from "./assets/HeroImgNew.webp";
+import Link from "next/link";
+import s1 from "./assets/stripe1.svg";
+import s2 from "./assets/stripe2.svg";
+import credit from "./assets/credit.webp";
+import loans from "./assets/loan.webp";
+import buy from "./assets/BNPL.webp";
+import sav from "./assets/AccountSave.webp";
+import { motion,AnimatePresence } from "framer-motion";
+
 
 export default function Home() {
+  
+  const start_animation=(event)=>{
+    var card=event.target.closest(`.${styles.card}`);
+    var offset = card.getBoundingClientRect();
+    var x=event.nativeEvent.clientX - offset.left;
+    var y= event.nativeEvent.clientY - offset.top;
+    // var divPos = [x,y];
+    var divPos = [x/offset.width,y/offset.height]; // 0 to 1 range
+    // changing to -1 to 1 range
+    divPos[0]=divPos[0]*2-1
+    divPos[1]=divPos[1]*2-1
+    
+    // console.log("mouse position(-1 to 1):",divPos)
+    
+    // change the sign
+    divPos[0]=divPos[0]*-1
+    divPos[1]=divPos[1]*-1
+
+    // scaling factor
+    divPos[0]*=10;  // x width-wise
+    divPos[1]*=5;  // y height-wise
+  
+    // console.log(offset)
+  
+    card.style.transform=`perspective(1000px) rotateX(${divPos[1]}deg) rotateY(${divPos[0]}deg) scale3d(1.02, 1.02, 1.02)`;
+    card.style.transition="all 400ms cubic-bezier(0.03, 0.98, 0.52, 0.99) 0s";
+    card.style.backgroundColor="white";
+    card.querySelector("div>img").style.filter="grayscale(0%)";
+
+  }
+  const stop_animation=(event)=>{
+    var card=event.target.closest(`.${styles.card}`);
+    card.style.transform="perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1.0, 1.0, 1.0)";
+    card.style.backgroundColor="";
+    card.querySelector("div>img").style.removeProperty("filter");
+  }
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <>
+      <div className={styles.whole}>
+        <div className={styles.home}>
+          <div className={styles.content}>
+            <h1>
+              Becoming a Financial Advisor and <span>Earn Rs.1 Lakh/Month</span>
+            </h1>
+
+            <p>No investment required</p>
+            <div>
+              <Link
+                href="https://play.google.com/store/apps/details?id=in.onecode.app"
+                passHref={true}
+                target="_blank"
+              >
+                {" "}
+                <Image src={download} alt="play store" />
+              </Link>
+            </div>
+          </div>
+          <div className={styles.pic}>
+            <Image src={Hero} alt="Hero" />
+          </div>
         </div>
       </div>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+      <div className={styles.brands}>
+        <h2>Top Brands on ZET</h2>
+        <p>We are trusted by best brand in the country</p>
+        <div className={styles.slider}></div>
       </div>
 
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+      {/* Products */}
+      <div className={styles.products}>
+        <div className={styles.brands}>
+          <h2>Products on ZET</h2>
+          <p>We are trusted by best brand in the country</p>
+        </div>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
+        <AnimatePresence>
+        <motion.div initial={{ opacity: 0 }}
+         key="modal"
+         animate = {{opacity: 1, transition:{duration: 0.8}}}
+        exit={{ opacity: 0 }} className={styles.cards}>
+          <Image src={s1} alt="s1" className={styles.s1} />
+          <Image src={s2} alt="s2" className={styles.s2} />
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+          <div className={`${styles.card} && ${styles.card1}`} onMouseMove={start_animation} onMouseLeave={stop_animation}>
+            <div className={styles.i1}>
+              <Image src={credit} alt="Credit" />
+            </div>
+            <div className={styles.matter}>
+              <p className={styles.m1}>CREDIT CARDS</p>
+              <p className={styles.m2}>
+                100% Contactless Application Process with Instant Approval From
+                Top Banks.
+              </p>
+            </div>
+          </div>
+
+          <div className={`${styles.card} && ${styles.card2}`} onMouseMove={start_animation} onMouseLeave={stop_animation}>
+            <div className={styles.i1}>
+              <Image src={loans} alt="Loans" />
+            </div>
+            <div className={styles.matter}>
+              <p className={styles.m1}>Loans</p>
+              <p className={styles.m2}>
+                1100% online process. Instant offers. Affordable Rate of
+                Interest on loans.
+              </p>
+            </div>
+          </div>
+
+          <div className={`${styles.card} && ${styles.card3}`} onMouseMove={start_animation} onMouseLeave={stop_animation}>
+            <div className={styles.i1}>
+              <Image src={buy} alt="BNPL" />
+            </div>
+            <div className={styles.matter}>
+              <p className={styles.m1}>BUY NOW PAY LATER</p>
+              <p className={styles.m2}>
+                Short-term financing that allows consumers to make purchases and
+                pay for them over time.
+              </p>
+            </div>
+          </div>
+
+          <div className={`${styles.card} && ${styles.card4}`} onMouseMove={start_animation} onMouseLeave={stop_animation}>
+            <div className={styles.i1}>
+              <Image src={sav} alt="Savings" />
+            </div>
+            <div className={styles.matter}>
+              <p className={styles.m1}>Saving Account</p>
+              <p className={styles.m2}>
+                ZET offers range of savings account that suits your personal
+                needs for the banking.
+              </p>
+            </div>
+          </div>
+        </motion.div>
+        </AnimatePresence>
       </div>
-    </main>
-  )
+
+      {/* The Zet Effect */}
+
+      {/* Why Choose Us */}
+
+      {/* Earning */}
+    </>
+  );
 }

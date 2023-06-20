@@ -1,0 +1,129 @@
+.foot{
+    height: 100%;
+
+}
+
+.foot >.backImage{
+    /* position: absolute;
+    color: transparent;
+   
+    width: 100%; */
+    /* width: 100%;
+    object-fit: cover; */
+
+    width: 100%;
+    object-fit: cover;
+    position: absolute;
+}
+
+.fcont{
+    position: relative;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+    /* padding: 2rem 3rem; */
+    padding: 0rem 5rem;
+}
+
+.fbox{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.5rem 12rem;
+}
+
+.lbox{
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    border-bottom: 1px solid rgb(236, 239, 245);
+    padding: 20px 0px;
+}
+.zet_logo{
+    height: 3vw;
+}
+
+.about{
+    width: 100%;
+    margin-top: 3vw;
+}
+
+.aboutd{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.aboutc{
+    display: flex;
+    flex-direction: column;
+    margin-top: 3vw;
+    /* align-items: center; */
+}
+
+.aboutc >p{
+    font-size: 18px;
+    font-weight: 500;
+    color: white;
+    text-align: start;
+    margin-bottom: 16px;
+}
+
+.aboutc a{
+    font-size: 16px;
+    color: white;
+    display: flex;
+    margin-bottom: 12px;
+    text-decoration: none;
+    font-family: Graphie;
+    font-style: normal;
+    font-weight: 400;
+}
+.cont{
+    height: 20px;
+    width: 20px;
+    color: rgb(255, 255, 255);
+    padding-right: 10px;
+}
+.social{
+    display: flex;
+    flex-direction: row;
+}
+
+.social > img{
+    padding-right: 16px;
+}
+@media only screen and (max-width: 810px) {
+
+    .fcont{
+        /* position: relative;
+    
+        justify-content: center;
+    
+        align-items: center;
+    
+        text-align: center; */
+        padding: 2rem 1rem;
+    }
+
+    .zet_logo{
+        height: 12vw;
+    }
+
+    .lbox{
+        display: flex;
+        width: 100%;
+        justify-content: flex-start;
+        border-bottom: 1px solid rgb(236, 239, 245);
+        padding: 20px 0px; 
+    }
+
+    .fbox{
+        padding: 0;
+    }
+   
+}
