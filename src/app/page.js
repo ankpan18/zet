@@ -13,7 +13,7 @@ import sav from "./assets/AccountSave.webp";
 import Indus from "./assets/IndusInd.webp";
 import ici from "./assets/Icici.webp";
 import Amex from "./assets/Amex.webp";
-import Bob from "./assets/Bob.webp";
+import Bob from "./assets/BOB.webp";
 import Axis from "./assets/Axis.webp";
 import Idfc from "./assets/Idfc.webp";
 import Aufin from "./assets/Aufin.webp";
