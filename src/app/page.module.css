@@ -53,6 +53,9 @@
 
 .brands{
     text-align:center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .products{
@@ -169,6 +172,97 @@
     color: rgb(54, 55, 75);
 }
 
+.slider{
+    margin: 5vh 0;
+    display: flex;
+    overflow:hidden;
+    width:80%;
+   
+    /* align-items: center;
+    
+    justify-content: space-around; */
+    
+}
+
+.eachprod{
+    width: 150px;
+    margin: 0 5px;
+    padding: 12px 0px;
+    border: 1px solid rgb(231, 231, 240);
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    border-radius: 8px;
+}
+
+.eachprod img{
+    width: 100px;
+    height: unset;
+}
+
+.choice1{
+    display: flex;
+    flex-direction: row;
+    padding: 4rem 8rem;
+}
+
+ .why{
+    width:277px;
+    height: 100%;
+    
+}
+
+.why img{
+    width: 100%;
+    height: 100%;
+}
+
+.txtc{
+    color: rgb(20, 92, 197);
+}
+
+.m2{
+    font-size: 24px;
+    line-height: 36px;
+    font-weight: 600;
+}
+
+/* .choice2{
+    display: flex;
+    flex-direction: column;
+} */
+
+.choice2{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    padding: 2vw 0vw 0vw 3vw;
+    width: 100%;
+}
+
+.whyusbtn img{
+    width: 6vw;
+}
+
+.whyusbtn> .t1{
+    font-size: 20px;
+    line-height: 30px;
+    letter-spacing: 0.1rem;
+    font-weight: 600;
+}
+
+.whyusbtn> .t2{
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 500;
+    color: rgb(54, 55, 75)
+}
+
+.whyusbtn{
+    padding: 25px;
+}
+
 @media only screen and (max-width: 800px) {
     .whole{
         padding: 2rem 1rem;
@@ -197,5 +291,24 @@
         justify-content: center;
         padding: 4vw;
     }
+
+    .why{
+        display: none;
+    }
+
+   
+    .whyusbtn img{
+        width: 18vw;
+    }
+
+    .choice1{
+        display: flex;
+        flex-direction: row;
+        padding: 0;
+    }
+    .whyusbtn{
+        padding: 0px;
+    }
     
 }
+
