@@ -41,10 +41,12 @@ const Navbar=()=> {
       <div className={styles.head}>
         <Link href="/">Home</Link>
         <Link href="/about">About Us</Link>
-        <Link href="/profile">Partner With Us</Link>
-        <Link href="/blog">Blog</Link>
+        {/* <Link href="/profile">Partner With Us</Link>
+        <Link href="/blog">Blog</Link> */}
         <div className={styles.btndiv}>
-        <button className={styles.btn}>Download ZET</button></div>
+        <Link href="https://play.google.com/store/apps/details?id=in.onecode.app"><button className={styles.btn}>Download ZET</button></Link>
+        {/* <button className={styles.btn}>Download ZET</button> */}
+        </div>
         </div>
        
       
